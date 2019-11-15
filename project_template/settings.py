@@ -29,7 +29,7 @@ is_debug = int(os.getenv('DEBUG', '0'))
 DEBUG = True if is_debug == 1 else False
 
 ALLOWED_HOSTS = [] if is_debug == 1 else [
-    'your.domain(s).here'
+    'www.example.com',
 ]
 
 
