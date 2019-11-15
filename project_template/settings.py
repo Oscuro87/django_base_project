@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')2%vf4a_t2pwtk6)i)xuh(%jv7t&8-vk(&1xb6o^ldczjfme@!'
+secret_file_path = os.path.join(BASE_DIR, 'secret.txt')
+with open(secret_file_path, 'r') as secret_file:
+    SECRET_KEY = secret_file.readline()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+is_debug = int(os.getenv('DEBUG', '0'))
+DEBUG = True if is_debug == 1 else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] if is_debug == 1 else [
+    'your.domain(s).here'
+]
 
 
 # Application definition
@@ -118,3 +124,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = 'public/static/'
