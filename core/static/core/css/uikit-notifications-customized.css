@@ -1,0 +1,29 @@
+.uk-notification {
+}
+
+.uk-notification-message {
+    border-radius: 5px;
+    opacity: 1;
+    padding: 1em;
+    color: white;
+}
+
+@media only screen and (min-width: 1024px) {
+    .uk-notification-message {
+        border-radius: 2px;
+        opacity: 1;
+        padding: 1em;
+    }
+}
+
+.uk-notification-message-danger {
+    background-color: #d55;
+}
+
+.uk-notification-message-info {
+    background-color: #55d;
+}
+
+.uk-notification-message-success {
+    background-color: #6acd4f;
+}
