@@ -28,7 +28,7 @@ with open(secret_file_path, 'r') as secret_file:
 is_debug = int(os.getenv('DEBUG', '0'))
 DEBUG = True if is_debug == 1 else False
 
-ALLOWED_HOSTS = [] if is_debug == 1 else [
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] if is_debug == 1 else [
     'www.example.com',
 ]
 
